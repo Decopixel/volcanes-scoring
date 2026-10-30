@@ -1,7 +1,7 @@
-/* WA Scoring 0.2.2 — actualización de archivos sin borrar datos de entrenamiento */
-const CACHE = 'wa-scoring-shell-v4';
+/* WA Scoring 0.3.0 — actualización de archivos sin borrar datos de entrenamiento */
+const CACHE = 'wa-scoring-shell-v5';
 const FILES = [
-  './', './index.html', './app.css?v=0.2.2', './app.js?v=0.2.2',
+  './', './index.html', './app.css?v=0.3.0', './app.js?v=0.3.0',
   './manifest.webmanifest', './icon-192.png', './icon-512.png'
 ];
 self.addEventListener('install', event => {

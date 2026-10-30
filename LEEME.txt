@@ -1,0 +1,63 @@
+WA SCORING — MVP 0.2 / ENTRENAMIENTO + COMPETENCIAS LOCALES
+Fecha: 30 de octubre de 2026
+
+QUÉ FUNCIONA EN ESTE PAQUETE
+1. Entrenamiento individual con rondas WA:
+   - Indoor 18 m: 40 cm, 60 flechas en 20 tandas de 3.
+   - Barebow 50 m: 122 cm, 72 flechas en 12 tandas de 6.
+   - Recurvo Olímpico 70 m: 122 cm, 72 flechas en 12 tandas de 6.
+2. Registro de flechas por toque en la diana, zoom por pellizco,
+   M fuera del blanco, X dentro del 10, deshacer y cierre de tandas.
+3. Guardado de cada flecha en IndexedDB, reanudar entrenamientos en curso.
+4. Historial, planilla, mapa de impactos, estadísticas 10–1 y M,
+   agrupación, cuadrantes, evolución por tanda y comparación de sesiones.
+5. Exportar entrenamiento CSV y .wascore; imprimir/guardar como PDF
+   mediante la opción de impresión del navegador; importar .wascore.
+6. NUEVO: crear competencias locales, elegir formato, registrar arqueros
+   con números fijos, crear vacantes al retirarlos y reutilizarlas.
+7. NUEVO: categorías Barebow/Recurvo/Compuesto/Tradicional, edades
+   Open/U21/U18/Máster +50, General/Novatos, género y lateralidad.
+8. NUEVO: sorteo de posiciones A/B/C/D en parapetos, opción de priorizar
+   zurdos en B/D DESACTIVADA por defecto, y bloqueo del sorteo.
+9. NUEVO: exportación/importación de cada competencia en un archivo
+   .wascore independiente. No reemplaza una competencia existente:
+   crea una copia si detecta identificadores iguales.
+10. Service worker PWA para funcionamiento local una vez instalado
+    desde HTTPS y cargados previamente los archivos.
+
+CÓMO PROBAR EN EL IPHONE / ANDROID
+- Descomprime el ZIP en un computador.
+- Publica la carpeta de archivos en un hosting estático HTTPS, como
+  GitHub Pages o Netlify Drop. Publica index.html, app.js, app.css,
+  manifest.webmanifest, sw.js e iconos en la MISMA carpeta.
+- Abre la dirección HTTPS en Safari (iPhone) o Chrome (Android).
+- En Safari: Compartir > Añadir a pantalla de inicio.
+- En Android: Instalar / Añadir a pantalla de inicio.
+- Abre la app al menos una vez con internet antes de usarla sin conexión.
+- No pruebes los botones desde la vista previa de Archivos o ChatGPT:
+  ese visor puede bloquear JavaScript y el acceso al almacenamiento.
+
+ESTADO DE PRUEBAS Y LIMITACIONES
+- Se comprobó la sintaxis JavaScript y la estructura del paquete.
+- El navegador automatizado de este entorno bloqueó URL locales por
+  política de administración; por eso el recorrido completo de la
+  versión 0.2 no pudo verificarse automáticamente.
+- No está probado en un iPhone físico ni hay servidor publicado.
+- La información queda EN ESTE dispositivo/navegador. Si se borran
+  los datos del sitio, se pierde: haz respaldos .wascore periódicos.
+- Los .wascore no están cifrados: guárdalos de manera privada.
+- Las posiciones de los impactos son estimaciones según dónde se toca.
+  Antes de utilizarlo oficialmente hay que validar el puntaje en líneas.
+- Las competencias de esta versión SÓLO gestionan inscripciones y
+  sorteo; aún NO anotan resultados ni publican llaves/QR reales.
+- Firmas, anotación compartida, sincronización local e internet,
+  eliminatorias, resultados oficiales y panel público permanecen
+  diseñados pero PENDIENTES de implementación funcional.
+
+EVOLUCIÓN DESDE EL MVP 0.1
+- Conserva la base IndexedDB de entrenamientos existente. Se añade
+  un almacén local separado para eventos sin borrar las sesiones.
+
+FUENTE PARA LOS FORMATOS
+World Archery, Libro 2, enero de 2026, art. 4.5.1.1.
+https://extranet.worldarchery.sport/documents/index.php/Rules/Rule_Book_versions/2026-01-27/EN-Book_2_-_2026-01-27_Version.pdf

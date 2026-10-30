@@ -4,3 +4,39 @@
 #print-sheet{display:none}
 
 .entry{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding:10px 1px}.entry:last-child{border-bottom:none}.entry-number{display:inline-grid;place-items:center;font-size:12px;font-weight:800;border-radius:7px;background:var(--soft);min-width:34px;min-height:34px}.draw-table .entry{display:grid;grid-template-columns:70px 45px minmax(0,1fr)}.draw-table .entry.heading{color:var(--muted);font-size:12px}.checkrow{display:flex;gap:9px;align-items:center;font-size:14px}.checkrow input{width:20px;height:20px;accent-color:var(--green)}
+
+/* WA Scoring 0.2.1: colores oficiales por zona. Se conserva "empty" para casillas sin flecha. */
+.score-box.ring-yellow,.mini-score.ring-yellow,.print-arrow.ring-yellow{background:#fce83b;color:#251f00;border:1px solid #b3a118}
+.score-box.ring-red,.mini-score.ring-red,.print-arrow.ring-red{background:#df3437;color:#fff;border:1px solid #a82127}
+.score-box.ring-blue,.mini-score.ring-blue,.print-arrow.ring-blue{background:#147fca;color:#fff;border:1px solid #14598d}
+.score-box.ring-black,.mini-score.ring-black,.print-arrow.ring-black{background:#202326;color:#fff;border:1px solid #070808}
+.score-box.ring-white,.mini-score.ring-white,.print-arrow.ring-white{background:#fff;color:#191d1a;border:1px solid #9ca7a0}
+.score-box.ring-miss,.mini-score.ring-miss,.print-arrow.ring-miss{background:#e6e8ea;color:#252b2e;border:1px dashed #939ba0}
+/* Una X conserva el amarillo, con doble línea oscura reconocible incluso sin color. */
+.score-box.x-ring,.mini-score.x-ring,.print-arrow.x-ring{box-shadow:inset 0 0 0 2px #594900,inset 0 0 0 4px #fff7b8}
+.mini-score-list{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.mini-score{display:inline-grid;place-items:center;min-width:26px;height:26px;border-radius:6px;font-size:12px;font-weight:800;font-variant-numeric:tabular-nums}
+/* El PDF mantiene el color, siempre que el sistema permita imprimir fondos. */
+@media print{
+  #print-sheet .print-arrow{font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #print-sheet td.print-arrow.ring-yellow,#print-sheet td.print-arrow.ring-red,
+  #print-sheet td.print-arrow.ring-blue,#print-sheet td.print-arrow.ring-black,
+  #print-sheet td.print-arrow.ring-white,#print-sheet td.print-arrow.ring-miss{
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+}
+
+/* 0.2.2: planilla completa mientras se anotan impactos. */
+.live-sheet{display:grid;gap:7px}
+.live-end{display:grid;gap:6px;border:1px solid var(--line);padding:9px;border-radius:11px;background:var(--card)}
+.live-end-current{border:2px solid var(--green);background:var(--soft)}
+.live-end-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.live-end-head strong{font-size:13px}
+.live-end-head .small{font-size:11px;text-align:right}
+.live-end-scores{display:grid;grid-template-columns:repeat(var(--arrows),minmax(0,1fr));gap:5px}
+.live-end-scores .score-box{min-width:0;min-height:35px;padding:2px;border-radius:7px;font-size:17px}
+.priority-option{border:1px solid var(--line);border-radius:12px;padding:10px;justify-content:space-between}
+.priority-option.priority-on{border-color:var(--green);background:var(--soft)}
+.priority-state{display:inline-block;margin-left:8px;padding:3px 7px;font-size:10px;border-radius:20px;background:#d5dce0;color:#2b3437}
+.priority-on .priority-state{background:#147e52;color:white}
+@media(max-width:370px){.live-end-scores{gap:3px}.live-end-scores .score-box{font-size:15px;min-height:32px}.live-end{padding:7px}}

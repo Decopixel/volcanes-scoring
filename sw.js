@@ -1,14 +1,31 @@
-/* WA Scoring 0.4.0 — actualización de archivos sin borrar datos de entrenamiento */
-const CACHE = 'wa-scoring-shell-v6';
+/* WA Scoring v0.6.4.8 PILOTO: espera aprobación para activar nueva versión. */
+const VERSION = '0.6.4.8';
+const CACHE = 'wa-scoring-shell-v25';
 const FILES = [
-  './', './index.html', './app.css?v=0.4.0', './app.js?v=0.4.0',
+  './', './index.html', './app.css?v=0.6.4.8', './app.js?v=0.6.4.8',
+  './updates.js?v=0.6.4.8',
+  './cloud.js?v=0.6.4.5', './eliminations.js?v=0.6.4.5',
+  './qr.js?v=0.6.4.5', './firebase-config.js?v=0.6.4.5',
   './manifest.webmanifest', './icon-192.png', './icon-512.png'
 ];
 self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)).then(() => self.skipWaiting()));
+  // NO skipWaiting en instalación: mantener la versión actual en sesiones activas.
+  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)));
+});
+self.addEventListener('message', event => {
+  if (event.data?.type === 'WA_GET_VERSION') {
+    event.ports?.[0]?.postMessage({type:'WA_SW_VERSION', version:VERSION});
+  }
+  if (event.data?.type === 'WA_APPLY_UPDATE') {
+    // Solo se envía mediante pulsación explícita de Actualizar ahora.
+    event.waitUntil(self.skipWaiting());
+  }
 });
 self.addEventListener('activate', event => {
-  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('wa-scoring-shell-') && key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim()));
+  event.waitUntil(caches.keys().then(keys => Promise.all(
+    keys.filter(key => key.startsWith('wa-scoring-shell-') && key !== CACHE)
+      .map(key => caches.delete(key))
+  )).then(() => self.clients.claim()));
 });
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
@@ -17,16 +34,14 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     fetch(event.request).then(response => {
       if (response.ok) {
-        const savedResponse = response.clone();
-        caches.open(CACHE).then(cache => cache.put(event.request, savedResponse)).catch(() => {});
+        const saved = response.clone();
+        caches.open(CACHE).then(cache => cache.put(event.request, saved)).catch(() => {});
       }
       return response;
     }).catch(async () => {
       const saved = await caches.match(event.request);
       if (saved) return saved;
-      if (event.request.mode === 'navigate') {
-        return caches.match('./index.html');
-      }
+      if (event.request.mode === 'navigate') return caches.match('./index.html');
       return Response.error();
     })
   );

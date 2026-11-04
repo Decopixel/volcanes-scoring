@@ -70,3 +70,220 @@ textarea:focus-visible,.signature-canvas:focus-visible{outline:3px solid var(--g
 .session .row{flex-wrap:wrap}
 .pill{max-width:100%}
 #validationSection{scroll-margin-top:16px}
+
+/* WA Scoring Firebase 0.5.0: código de sala y QR móviles */
+.room-code{display:block;background:var(--card);border-radius:10px;padding:11px;overflow-wrap:anywhere;font-size:15px;letter-spacing:.05em;color:var(--ink)}
+.qr-box{display:grid;place-items:center;margin:auto;background:#fff;border:1px solid #dae3dc;border-radius:12px;padding:12px;max-width:280px}
+.wa-qr{max-width:235px;width:100%;height:auto;display:block;aspect-ratio:1}
+
+/* v0.5.3 · Corrección directa de flechas seleccionadas, sin alterar colores WA */
+button.score-editable{cursor:pointer;font:inherit;line-height:1.1;border-width:2px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:1px}
+button.score-editable small{font-size:9px;font-weight:700;opacity:.8}
+button.score-editable:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+button.score-editable.score-edit-selected{outline:3px solid var(--green);outline-offset:1px;box-shadow:0 0 0 2px var(--card) inset}
+.shot-edit-banner{display:grid;gap:7px;border:2px solid var(--green);background:var(--soft);padding:12px;border-radius:12px;font-size:13px}
+.shot-edit-banner span{color:var(--muted)}
+.shot-edit-banner button{justify-self:start}
+
+/* 0.5.4: modo espectador y biblioteca personal, sin modificar colores WA */
+.nav{grid-template-columns:repeat(5,minmax(0,1fr))}
+.nav button{font-size:9px;min-width:0}
+.nav button .ico{font-size:19px}
+@media(max-width:375px){.nav button{font-size:8px}.nav button .ico{font-size:18px}}
+#spectatorFilter{width:100%}
+.session .btn{justify-self:start}
+
+/* 0.6.0 — Cuadros y carga de tandas en pantallas pequeñas, sin alterar estilo de clasificación */
+.elim-rounds{display:flex;align-items:start;gap:12px;overflow-x:auto;overscroll-behavior-inline:contain;padding:7px 0 15px}
+.elim-round{display:grid;gap:9px;min-width:188px;max-width:230px;flex-shrink:0}
+.elim-round h3{font-size:14px;margin:0}
+.elim-match{display:grid;gap:6px;text-align:left;padding:10px;border:1px solid var(--line);background:var(--card);border-radius:10px;color:var(--ink);width:100%;font:inherit;font-size:12px}
+.elim-match.selected{border:2px solid var(--green);background:var(--soft)}
+.elim-match span{overflow-wrap:anywhere}
+.elim-match span strong{float:right;margin-left:6px}
+.elim-winner{color:var(--green);font-weight:700}
+.elim-score-row,.elim-score-head{display:grid;grid-template-columns:minmax(65px,1fr) minmax(70px,1fr) minmax(70px,1fr);gap:8px;align-items:center}
+.elim-score-head{font-size:11px;color:var(--muted);overflow-wrap:anywhere}
+.elim-score-row input{width:100%;min-width:0;text-align:center;padding:9px 2px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;font-size:18px}
+.elim-score-row strong{font-size:12px}
+.elim-spectator-match{display:grid;gap:5px;background:var(--soft);border:1px solid var(--line);border-radius:9px;padding:9px;font-size:11px}
+.elim-spectator-match strong{color:var(--green)}
+@media(max-width:360px){.elim-score-row,.elim-score-head{grid-template-columns:64px minmax(0,1fr) minmax(0,1fr)}}
+
+/* 0.6.1 · anotación por flecha desde teléfonos remotos */
+.elim-arrow-buttons{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.elim-arrow-buttons .btn{min-width:0;padding:10px 2px;font-weight:700;font-size:14px}
+.elim-arrow-chip{display:inline-flex;min-width:40px;justify-content:center;padding:9px 13px;border:1px solid var(--line,#bcc7d4);border-radius:10px;font-weight:700}
+@media(max-width:360px){.elim-arrow-buttons{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* v0.6.2 · Marcador de eliminatoria: pantalla por encuentro y set (móvil) */
+.elim-board{display:grid;gap:12px;min-width:0}
+.elim-board-label{text-align:center;font-size:10px;letter-spacing:.14em;font-weight:900;color:var(--muted)}
+.elim-versus{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:9px;align-items:stretch;border:1px solid var(--line);border-radius:14px;padding:9px;background:var(--card)}
+.elim-side{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:3px;min-width:0;padding:9px 4px;border-radius:11px}
+.elim-side.leader{background:#daebd6;color:#20542a}
+.elim-side strong{font-size:38px;line-height:1;font-weight:850;font-variant-numeric:tabular-nums}
+.elim-side .elim-person{font-size:12px;font-weight:800;line-height:1.25;text-align:center;overflow-wrap:anywhere}
+.elim-dash{font-size:24px;font-weight:800;align-self:center;color:var(--muted)}
+.elim-state{text-align:center;padding:10px 12px;border:1px solid #ebcd8c;background:#fff2d3;border-radius:11px;color:#80571a;font-weight:800;font-size:12px}
+.elim-state.is-decided{background:#d9efdc;color:#145a30;border-color:#aedcb3}
+.elim-current{display:grid;gap:9px;padding:13px;background:var(--soft);border-radius:13px}
+.elim-current-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.elim-current-cols>div{min-width:0;display:grid;gap:8px;padding:9px;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.elim-current-cols>div>span{font-size:11px;font-weight:800;overflow-wrap:anywhere;min-height:27px}
+.elim-current-cols>div>strong{font-size:13px;text-align:center;font-variant-numeric:tabular-nums}
+.elim-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.elim-three .elim-arrow-chip{padding:6px 1px;min-width:0;font-size:16px}
+.elim-arrow-chip.filled{background:#fff;border-color:#cbbf9d}
+.elim-history{display:grid;gap:6px}
+.elim-history>strong{font-size:13px}
+.elim-set-line{display:grid;grid-template-columns:55px 48px minmax(0,1fr);gap:4px 8px;align-items:center;border:1px solid var(--line);border-radius:9px;padding:9px;background:var(--card)}
+.elim-set-label{font-size:12px;font-weight:800}
+.elim-set-line>strong{font-variant-numeric:tabular-nums}
+.elim-set-winner{font-size:12px;font-weight:700;color:var(--green);overflow-wrap:anywhere}
+.elim-set-line>small{grid-column:1/-1;color:var(--muted);overflow-wrap:anywhere}
+.elim-keypad-panel{display:grid;gap:12px;padding:12px 9px;border:2px solid var(--green);border-radius:14px;background:var(--soft)}
+.elim-keypad-panel>strong{font-size:12px;text-align:center}
+.elim-pick{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.elim-pick-side{min-width:0;display:grid;gap:4px;padding:11px 8px;border:1px solid var(--line);border-radius:11px;background:var(--card);color:var(--ink);text-align:center}
+.elim-pick-side.selected{border:2px solid var(--green);background:#e0efdd;box-shadow:0 0 0 1px var(--green)}
+.elim-pick-side>span{font-size:12px;font-weight:800;overflow-wrap:anywhere}
+.elim-pick-side>small{font-size:11px;color:var(--muted)}
+.elim-keypad-title{text-align:center;font-weight:800;font-size:14px;overflow-wrap:anywhere}
+.elim-arrow-buttons{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.elim-arrow-buttons .btn{min-width:0;min-height:49px;padding:7px 1px;font-size:19px;font-weight:850;border-radius:10px}
+.elim-arrow-buttons .btn[data-value$="|X"],.elim-arrow-buttons .btn[data-value$="|10"],.elim-arrow-buttons .btn[data-value$="|9"]{background:#f6da4d;color:#2a2417;border-color:#bdab4c}
+.elim-arrow-buttons .btn[data-value$="|8"],.elim-arrow-buttons .btn[data-value$="|7"]{background:#d8483c;color:white;border-color:#a62c25}
+.elim-arrow-buttons .btn[data-value$="|6"],.elim-arrow-buttons .btn[data-value$="|5"]{background:#177ab7;color:white;border-color:#1b5f90}
+.elim-arrow-buttons .btn[data-value$="|4"],.elim-arrow-buttons .btn[data-value$="|3"]{background:#282c30;color:white;border-color:#131517}
+.elim-arrow-buttons .btn[data-value$="|M"]{background:#dedede;color:#454545}
+.elim-public-match{border:1px solid var(--line);border-radius:12px;padding:10px;display:grid;gap:10px;background:var(--card)}
+.elim-public-trigger{display:flex;align-items:center;justify-content:space-between;gap:7px;width:100%;border:0;background:transparent;color:var(--ink);padding:5px;text-align:left}
+.elim-public-trigger>div{display:grid;gap:4px;min-width:0;flex:1}
+.elim-public-trigger strong{font-size:12px;overflow-wrap:anywhere}
+.elim-public-trigger small{font-size:10px;color:var(--muted);overflow-wrap:anywhere}
+.elim-public-score{font-size:21px;font-weight:900;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(max-width:380px){.elim-side strong{font-size:31px}.elim-side .elim-person{font-size:11px}.elim-arrow-buttons{grid-template-columns:repeat(6,minmax(0,1fr))}.elim-arrow-buttons .btn{font-size:17px;min-height:44px}.elim-board{gap:9px}.elim-pick-side{padding:9px 4px}}
+
+/* 0.6.3 — indicación del orden de tiro, visible para anotador y espectador */
+.elim-shoot-info{display:grid;gap:5px;border:1px solid #87b2d0;background:#eaf4ff;color:#163d5d;border-radius:12px;padding:12px;font-size:13px;line-height:1.45;}
+.elim-shoot-info strong{font-size:14px}.elim-shoot-info small{display:block;color:#375b73;font-size:12px;}
+
+/* v0.6.4.2: restablece el control de checkbox nativo en Safari/iOS.
+   La regla general input { appearance:none } ocultaba la marca de seleccionado. */
+input[type="checkbox"] {
+  -webkit-appearance: checkbox; appearance: auto;
+  width: 23px; min-width: 23px; height: 23px; flex: 0 0 23px;
+  padding: 0; margin: 0; border: 0; border-radius: 4px;
+  accent-color: var(--green); cursor: pointer;
+}
+input[type="checkbox"]:disabled { cursor: not-allowed; opacity: .55; }
+.test-mode-state { display: inline-block; margin-left: 8px; padding: 3px 7px; font-size: 10px; border-radius: 20px; background: #d5dce0; color: #2b3437; }
+.test-mode-on .test-mode-state { background: #d5f2df; color: #116638; }
+
+/* 0.6.4.4 — anotador: puntos y controles no descienden al crecer el historial. */
+.elim-board-compact{gap:7px}
+.elim-scorer-current{padding:8px}
+.elim-scorer-current .elim-current-cols>div{padding:7px;gap:5px}
+.elim-scorer-current .elim-current-cols>div>span{min-height:0}
+.elim-scorer-current .elim-arrow-chip{padding:5px 1px;font-size:15px}
+.elim-history-below{display:grid;gap:9px;margin-top:3px;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:12px 10px}
+.elim-history-below>strong{font-size:13px}
+.elim-shoot-info-compact{padding:8px 10px}
+.elim-shoot-info-compact strong{font-size:12px}
+.field[hidden]{display:none!important}
+
+/* 0.6.4.4 — guía breve antes de comenzar tiro alternado. */
+.elim-choice-help{border:1px solid #80a68b;background:#eff7f0;padding:12px;border-radius:14px;display:flex;flex-direction:column;gap:8px;color:#143623}
+.elim-choice-help .elim-choice-heading{font-weight:800;font-size:14px}
+.elim-choice-help p{margin:0;font-size:14px;line-height:1.45}
+.elim-choice-help small{font-size:12px;line-height:1.3}
+.elim-first-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.elim-first-buttons .btn{white-space:normal;min-height:48px;overflow-wrap:anywhere}
+@media(max-width:420px){.elim-first-buttons{grid-template-columns:1fr}}
+
+/* v0.6.4.6 PILOTO — compatibilidad con Safari iOS.
+   Evita la capa transformada de la barra fija, que puede desacoplarse del
+   viewport mientras se hace scroll/zoom en iPhone. Conservar la diana táctil. */
+.nav {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  transform: none;
+  -webkit-transform: none;
+}
+/* Safari amplía la página al enfocar controles con tipografía <16px.
+   Se limita a dispositivos táctiles y no altera el tamaño de otros textos. */
+@media (hover: none) and (pointer: coarse) {
+  input:not([type="checkbox"]), select, textarea { font-size: 16px; }
+}
+
+/* v0.6.4.7 — aviso PWA: fuera de #app para sobrevivir al render.
+   Se oculta por completo mientras se anota una tanda/encuentro. */
+.wa-update-banner[hidden] { display:none !important; }
+.wa-update-banner {
+  position: fixed;
+  z-index: 50;
+  left:0; right:0; bottom:calc(78px + env(safe-area-inset-bottom));
+  max-width:640px;
+  margin:0 auto;
+  padding:13px 15px;
+  border:1px solid #aacbb5;
+  border-radius:15px;
+  background:#f2fff4;
+  box-shadow:0 8px 30px #1b3c2540;
+  color:#16402a;
+  font-size:14px;
+  line-height:1.4;
+}
+.wa-update-header {display:flex;gap:9px;align-items:center;font-size:15px}
+.wa-update-banner p {margin:7px 0 11px}
+.wa-update-actions {display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.wa-update-actions .btn {min-height:44px;font-size:14px}
+@media(max-width:360px){.wa-update-banner{padding:10px 11px}}
+@media print {.wa-update-banner{display:none!important}}
+
+/* v0.6.4.8 PILOTO · SOLO ENTRENAMIENTO: planilla de cuatro tandas táctil. */
+.training-compact-page{gap:11px;padding:12px}
+.training-compact-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.training-compact-top h2{font-size:18px}
+.training-top-score{display:grid;justify-items:end;gap:1px;white-space:nowrap}
+.training-top-score strong{font-size:25px;font-weight:800;line-height:1.05;font-variant-numeric:tabular-nums}
+.training-top-score small{font-size:10px}
+.training-target .target-wrap{max-width:340px;padding:5px;background:var(--soft)}
+.training-target .target-controls{margin-top:6px}
+.training-target .target-controls .small{font-size:11px}
+.training-target .footer-note{padding:2px;font-size:10px}
+.training-sheet{display:grid;gap:7px;border-top:1px solid var(--line);padding-top:10px;min-width:0}
+.training-sheet-title{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.training-sheet-title h3{font-size:14px}
+.training-sheet-title .small{font-size:10px;text-align:right}
+.training-compact-grid{display:grid;grid-template-columns:26px repeat(var(--training-columns),minmax(0,1fr)) 37px 43px;gap:4px;align-items:center;min-width:0}
+.training-compact-head{text-align:center;color:var(--muted);font-size:10px;font-weight:700}
+.training-compact-scroll{height:204px;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--line) transparent;border-radius:7px}
+.training-compact-rows{display:grid;gap:6px}
+.training-end-row{height:46px;min-height:46px}
+.training-current-row .training-index{color:var(--green);font-weight:850}
+.training-index,.training-subtotal,.training-cumulative{font-size:12px;font-weight:700;text-align:center;font-variant-numeric:tabular-nums}
+.training-arrow{height:44px;min-height:44px;min-width:0;padding:0;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1px;font-size:17px;font-weight:800;font-variant-numeric:tabular-nums}
+.training-arrow.score-box{height:44px;min-height:44px;font-size:17px}
+.training-arrow.score-editable small{font-size:8px}
+.training-empty{background:var(--soft);color:var(--muted);border:1px dashed var(--line);font-weight:400}
+.training-sheet-tip{font-size:10px;text-align:center;line-height:1.3}
+.training-reachable{display:grid;gap:9px;border-top:1px solid var(--line);padding-top:10px}
+.training-reachable-top{display:flex;align-items:center;justify-content:space-between;gap:7px;font-size:12px;font-weight:700}
+.training-reachable-top strong{color:var(--green);font-size:26px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.training-reachable-top strong small{font-size:12px;font-weight:500;color:var(--muted)}
+.training-mini-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.training-mini-metrics>div{display:grid;align-content:center;justify-items:center;gap:4px;min-width:0;padding:7px 4px;background:var(--soft);border-radius:9px;text-align:center;min-height:64px}
+.training-mini-metrics small{font-size:10px;color:var(--muted);line-height:1.2}
+.training-mini-metrics strong{font-size:18px;font-variant-numeric:tabular-nums}
+.training-secondary-actions{display:grid;gap:5px}
+@media(max-width:380px){
+ .training-compact-page{padding:10px}
+ .training-compact-grid{grid-template-columns:20px repeat(var(--training-columns),minmax(0,1fr)) 32px 38px;gap:3px}
+ .training-arrow.score-box{font-size:15px}
+ .training-arrow.score-editable small{font-size:7px}
+ .training-mini-metrics small{font-size:9px}
+}

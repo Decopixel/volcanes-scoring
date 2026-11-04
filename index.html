@@ -7,15 +7,27 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="WA Scoring">
-  <meta name="description" content="Entrenamientos WA 18/50/70 m y administración local de competencias, con historial y estadísticas completas.">
+  <meta name="description" content="Entrenamientos WA 18/50/70 m y competencias, estadísticas personales y resultados públicos Firebase, con historial y estadísticas completas.">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="apple-touch-icon" href="./icon-192.png">
   <link rel="icon" href="./icon-192.png" type="image/png">
-  <link rel="stylesheet" href="./app.css?v=0.4.0">
+  <link rel="stylesheet" href="./app.css?v=0.6.4.8">
   <title>WA Scoring · Entrenamiento y Competencias</title>
 </head>
 <body>
+  <section id="wa-update-banner" class="wa-update-banner" role="region" aria-label="Actualización de WA Scoring" hidden>
+    <div class="wa-update-header"><span aria-hidden="true">⬇️</span><strong id="wa-update-title">Nueva versión disponible</strong></div>
+    <p id="wa-update-description">La actualización está preparada. No se eliminarán tus datos locales.</p>
+    <div class="wa-update-actions">
+      <button type="button" id="wa-update-apply" class="btn primary">Actualizar ahora</button>
+      <button type="button" id="wa-update-later" class="btn">Más tarde</button>
+    </div>
+  </section>
   <div id="app"><div class="loading">Cargando WA Scoring…</div></div>
-  <script src="./app.js?v=0.4.0" defer></script>
+  <script src="./firebase-config.js?v=0.6.4.5"></script>
+  <script src="./qr.js?v=0.6.4.5" defer></script>
+  <script src="./eliminations.js?v=0.6.4.5" defer></script>
+  <script src="./updates.js?v=0.6.4.8" defer></script>
+  <script src="./app.js?v=0.6.4.8" defer></script>
 </body>
 </html>

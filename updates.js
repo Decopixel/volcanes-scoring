@@ -1,8 +1,8 @@
-/* WA Scoring — detector de nuevas versiones PWA v0.6.4.8.
+/* WA Scoring — detector de nuevas versiones PWA v0.6.4.10.
    No usa Firebase ni toca IndexedDB. Cambia de versión SOLO con autorización. */
 (() => {
   'use strict';
-  const CURRENT_VERSION='0.6.4.8';
+  const CURRENT_VERSION='0.6.4.10';
   const sw=navigator.serviceWorker;
   const supported=Boolean(sw && (location.protocol==='https:' || location.hostname==='localhost'));
   const banner=document.getElementById('wa-update-banner');
